@@ -14,9 +14,17 @@
         <h3 class="container" id="ccc" style="cursor: pointer">请点击这里哦！</h3>
         <h3 class="container" id="ddd" style="cursor: pointer;color: red">是风动，是叶动，还是心动？</h3>
     <div class="container">
-            <video autoplay loop muted>
+            <div class="fullvid">
+                    <div class="videobox">
+                        <video muted="muted" loop="loop" autoplay="autoplay" height="100%" width="100%">
+                                <source src="asset/assect/VID_20210404_104811.mp4" type="video/mp4"  />
+                            <!-- <source src="https://static.web.sdo.com/jijiamobile/pic/ff14/ffweb850/vindex0130_2.mp4?123" type="video/mp4"> -->
+                        </video>
+                    </div>
+                </div>
+            <!-- <video autoplay loop muted>
                     <source src="asset/assect/VID_20210404_104811.mp4" type="video/mp4"  />
-                  Your browser does not support the video tag.
+                  Your browser does not support the video tag. -->
     </div>
    
       
@@ -28,6 +36,29 @@ $('#ccc').click(function(){
 $('#ddd').click(function(){
     alert('哈哈哈！不愧是我家的小可爱。')
 })
+var n = document.documentElement.clientHeight,
+        e = document.documentElement.clientWidth,
+        t = n / e;
+    $("fullvid").height(n);
+    // 9/16=0.5625视频宽高比
+    if (t > .5625) {
+        $(".videobox").width(n / .5625);
+        $(".videobox").height(n);
+        $(".videobox").css("marginLeft", 0 - (n / .5625 - e) / 2);
+        // $(".videobox").css("marginTop", 0);
+    }
+    else if (t < .5625) {
+        $(".videobox").width(e);
+        $(".videobox").height(.5625 * e);
+        $(".videobox").css("marginLeft", 0);
+        // $(".videobox").css("marginTop", 0 - (.5625 * e - n) / 2);
+    }
+    else {
+        $(".videobox").width(e);
+        $(".videobox").height(n);
+        $(".videobox").css("marginLeft", 0);
+        // $(".videobox").css("marginTop", 0);
+    }
 </script>
 <style>
     .container{
